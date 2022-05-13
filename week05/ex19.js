@@ -65,3 +65,72 @@ Instruction
 Create a function generateBoard which will return a nested array representing the board, containing the location of two queens.
 Create a function called queenThreat that will indicate whether or not the two queens are positioned so that they attack each other.
 */
+
+function generateBoard(whiteQueen, blackQueen) {
+  board = [
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0]
+  ];
+
+  board[whiteQueen[0]][whiteQueen[1]] = 1;
+  board[blackQueen[0]][blackQueen[1]] = 1;
+
+  return board;
+}
+
+function queenThreat(board) {
+  let whiteQueen = [], blackQueen = [];
+  for (let i = 0 ; i < 8 ; i++) {
+    for (let j = 0 ; j < 8 ; j++) {
+      if (board[i][j] == 1) {
+        if (whiteQueen.length === 0) {
+          whiteQueen = [i,j];
+        } else {
+          blackQueen = [i,j];
+        }
+      }
+    }
+  }
+
+  if ( (whiteQueen[0] === blackQueen[0]) || (whiteQueen[1] === blackQueen[1]) ||
+        (whiteQueen[0] > blackQueen[0] ? whiteQueen[0] - blackQueen[0] : blackQueen[0] - whiteQueen[0]) ===
+        (whiteQueen[1] > blackQueen[1] ? whiteQueen[1] - blackQueen[1] : blackQueen[1] - whiteQueen[1]) ) {
+          return true;
+  }
+    
+  return false;
+}
+
+function printBoard(board) {
+  let result = "";
+  for (let i = 0 ; i < 8 ; i++) {
+    for (let j = 0 ; j < 8 ; j++) {
+      result += board[i][j] + " ";
+    }
+    result += "\n";
+  }
+  console.log(result);
+}
+
+
+// First case 
+// let whiteQueen = [0, 5];
+// let blackQueen = [5, 0];
+// let generatedBoard = generateBoard(whiteQueen, blackQueen);
+// printBoard(generatedBoard);
+// console.log(queenThreat(generatedBoard));
+
+// Second case
+// let whiteQueen = [0, 0];
+// let blackQueen = [5, 7];
+// let generatedBoard = generateBoard(whiteQueen, blackQueen);
+// printBoard(generatedBoard);
+// console.log(queenThreat(generatedBoard));
+
+
