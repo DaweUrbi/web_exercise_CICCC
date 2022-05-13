@@ -11,7 +11,7 @@ const numberOfVowels = function(data) {
     let count = 0;
     let vowels = "aeiou";
 
-    for(let i = 1; i < data.length; i++){
+    for(let i = 0; i < data.length; i++){
       if(vowels.indexOf(data[i]) >= 0) 
        count++
       }

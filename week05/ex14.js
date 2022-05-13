@@ -25,19 +25,30 @@ Penny (1¢)
 const currencyDenominations = ['twenty', 'ten', 'five', 'two', 'one', 'quarter', 'dime', 'nickel', 'penny', 'Dollar'];
 const currencyValue = [2000, 1000, 500, 200, 100, 25, 10, 5, 1];
 
-const calculateChange = function(total, cash) {
-  let changeObj = {};
-  let len = currencyValue.length
-  let change = cash - total;
-  for(let i = 0; i < len; i++){
-    if(change > currencyValue[i]){
-      changeObj[currencyDenominations[i]] = Math.floor(change / currencyValue[i]);
-      change = change % currencyValue[i];
+const calculateChange = (total, cash) => {
+  const change = {};
+  let remainder = cash - total;
+
+  for (const type of change) {
+    while (remainder - type.cents >= 0) {
+      change[type.name] ? change[type.name] += 1 : change[type.name] = 1;
+      remainder -= type.cents;
     }
   }
-
-  return changeObj;
+  return change;
 };
+
+const change = [
+  { name: 'twentyDollar', cents: 2000}, 
+  { name: 'tenDollar', cents: 1000 }, 
+  { name: 'fiveDollar', cents: 500 }, 
+  { name: 'twoDollar', cents: 200 },
+  { name: 'oneDollar', cents: 100 }, 
+  { name: 'quarter', cents: 25 }, 
+  { name: 'dime', cents: 10 }, 
+  { name: 'nickel', cents: 5 }, 
+  { name: 'penny', cents: 1 }, 
+];
 
 console.log(calculateChange(1787, 2000)); // { twoDollar: 1, dime: 1, penny: 3 }
 console.log(calculateChange(2623, 4000)); // { tenDollar: 1, twoDollar: 1, oneDollar: 1, quarter: 3, penny: 2 }

@@ -24,7 +24,7 @@ const urlEncode = function(text) {
   // };
 
   let rep = "%20"
-  for(let i=0 ; i<text.length ; i++)
+  for(let i = 0; i < text.length; i++)
   {
       if(text[i] == ' ')
           text = text.replace(text[i],rep);
