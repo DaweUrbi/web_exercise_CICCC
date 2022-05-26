@@ -84,6 +84,17 @@ function generateBoard(whiteQueen, blackQueen) {
   return board;
 }
 
+function printBoard(board) {
+  let result = "";
+  for (let i = 0 ; i < 8 ; i++) {
+    for (let j = 0 ; j < 8 ; j++) {
+      result += board[i][j] + " ";
+    }
+    result += "\n";
+  }
+  console.log(result);
+}
+
 function queenThreat(board) {
   let whiteQueen = [], blackQueen = [];
   for (let i = 0 ; i < 8 ; i++) {
@@ -107,16 +118,7 @@ function queenThreat(board) {
   return false;
 }
 
-function printBoard(board) {
-  let result = "";
-  for (let i = 0 ; i < 8 ; i++) {
-    for (let j = 0 ; j < 8 ; j++) {
-      result += board[i][j] + " ";
-    }
-    result += "\n";
-  }
-  console.log(result);
-}
+
 
 
 // First case 

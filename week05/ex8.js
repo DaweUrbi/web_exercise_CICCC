@@ -31,7 +31,6 @@ const repeatNumbers = function(data) {
 
     return str;
   }
- 
 };
 
 console.log(repeatNumbers([[1, 10]])); // 1111111111

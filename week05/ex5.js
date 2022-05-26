@@ -19,9 +19,6 @@ Use some sort of looping. Do Not use String.prototype.replace
 */
 
 const urlEncode = function(text) {
-  // const regex = /\s+/g;
-  // return text.replace(regex, '%20');
-  // };
 
   let rep = "%20"
   for(let i = 0; i < text.length; i++)
