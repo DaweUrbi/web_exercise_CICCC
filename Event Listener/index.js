@@ -1,11 +1,32 @@
-const tasks = ['Task 1', 'Task 2', 'Task 3', 'Task 4'];
+let tasks;
+const ownerName = 'freeCodeCamp';
+const repoName = 'freeCodeCamp';
 
-//Get items list by id
+fetch(`https://api.github.com/repos/${ownerName}/${repoName}/issues`)
+    .then(response => response.json())
+    .then(data => {
+        const dataString = JSON.stringify(data);
+        tasks = [...data];
+        for (let task in tasks) {
+            addTaskToList(tasks[task].title);
+        }
+    });
+
+// async / await options
+// async function getRepositoryIssues(ownerName, repoName) {
+//     try {
+//         const response = await fetch(`https://api.github.com/repos/${ownerName}/${repoName}/issues`);
+//         const data = await response.json();
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
+
+// getRepositoryIssues('freeCodeCamp', 'freeCodeCamp');
 
 const tasksList = document.getElementById("items");
 
 //Create a function addTaskToList to append task to the list
-
 function addTaskToList(task){
     const li = document.createElement("li");
     //<li></li>
